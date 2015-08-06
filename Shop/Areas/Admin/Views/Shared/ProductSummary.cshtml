@@ -1,0 +1,27 @@
+﻿@model Shop.Models.Product
+
+<div class="row">
+    <div class="col-md-2">
+        @if (Model.ImageData != null)
+        {
+            <div class="pull-right" style="margin-right: 10px">
+                <img class="img-thumbnail" width="120px" height="120px"
+                     src="@Url.Action("GetThumb", "Product", new { Model.Id })" />
+            </div>
+        }
+    </div>
+    <div class="col-md-2 pull-right">
+        <b>نام کالا: @Model.Name</b>
+        <br />
+        <b>دسته کالا: @Model.Category.Name</b>
+        <br />
+        <b>قیمت: @Model.Price</b>
+        <br/>
+
+        @Html.ActionLink("ویرایش", "Edit", "Product", new { Model.Id }, new { @class = "btn btn-warning" }) &nbsp;
+        @using (Html.BeginForm("Delete", "Product", new { Model.Id }, FormMethod.Post, null))
+        {
+            <input type="submit" value="حذف" class="btn btn-danger"/>
+        }
+    </div>
+</div>

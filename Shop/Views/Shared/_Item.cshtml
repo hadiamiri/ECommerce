@@ -1,0 +1,19 @@
+﻿@model Shop.ViewModels.ProductHomeView
+<div class="col-sm-3 col-lg-3 col-md-3" style="font-family: byekan">
+    <div class="thumbnail">
+        <img src="@Url.Action("GetThumb", "Product", new { Model.Id })" width="120px" height="120px" class="img-thumbnail">
+        <div class="caption">
+            <h4 class="pull-left" style="font-family: byekan">@Model.Price</h4>
+            <h4>
+                <a href="@Url.Action("ProductDetail", "ViewProduct", new {Model.Id})" style="font-family: byekan">@Model.Name</a>
+            </h4>
+            <p style="font-family: byekan">@Model.Description</p>
+        </div>
+        <div class="ratings" style="font-family: byekan">
+            <p class="pull-left">@Model.ReviewsCount نظر</p>
+            <p>
+                @Html.DisplayFor(x => x.Rating)
+            </p>
+        </div>
+    </div>
+</div>

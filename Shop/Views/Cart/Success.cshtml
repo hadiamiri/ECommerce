@@ -1,0 +1,15 @@
+﻿@model int
+           
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "موفقیت خرید";
+}
+<div class="alert alert-succs">
+    <span style="font-size: 16px">
+        خرید شما با موفقیت انجام شد!!!
+        <br/>
+        شماره فاکتور شما @Model میباشد
+    </span>
+    
+    @Html.ActionLink("ادامه خرید!", "Index", "Home", new {@class = "btn btn-success"})
+</div>

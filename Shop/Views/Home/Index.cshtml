@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Shop.ViewModels.ProductHomeView>
+@{
+    ViewBag.Title = "لیست تمام محصولات";
+}
+
+
+
+<div class="col-md-9">
+    @Html.Partial("_Slider")
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            @Html.Partial("_Item", p)
+        }
+    </div>
+</div>

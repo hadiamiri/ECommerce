@@ -1,0 +1,48 @@
+﻿@model Shop.ViewModels.ProductDetailViewModel
+<div class="col-md-9">
+
+    <div class="thumbnail" style="font-family: byekan">
+        <img class="img-responsive" width="400" height="300" src="@Url.Action("GetImage", "Product", new {Model.Id})">
+        <div class="caption-full">
+            <h4 class="pull-left">قیمت @Model.Price ریال</h4>
+            <h4>
+                <a href="#" style="font-family: byekan">@Model.Name</a>
+            </h4>
+
+            <p style="font-family: byekan">@Model.Description</p>
+        </div>
+        <div class="ratings">
+            <p class="pull-right"> تعداد نظرات: @Model.ReviewsCount</p>
+            <p class="pull-left">
+               @Html.DisplayFor(x => x.Rating)
+            </p>
+        </div>
+        <br />
+    </div>
+
+    <div class="well">
+
+        <div class="text-left">
+            @using (Html.BeginForm("AddToCart", "Cart"))
+            {
+                @Html.HiddenFor(x => x.Id)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success" value="اضافه به سبد" />
+            }
+            @Html.ActionLink("درج نظر جدید", "AddComment", "ViewProduct", new { Model.Id }, new { @class = "btn btn-info" })
+            @Html.ActionLink("بازگشت به صفحه اصلی", "Index", "Home", null, new { @class = "btn btn-danger" })
+        </div>
+        <hr>
+        @if (Model.Reviews.Count() != 0)
+        {
+            foreach (var r in Model.Reviews)
+            {
+                @Html.Partial("review", r)
+            }
+        }
+        else
+        {
+            <div class="text-warning">نظری ثبت نشده است</div>
+        }
+    </div>
+</div>

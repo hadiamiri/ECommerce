@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Shop.Areas.Admin.ViewModels.OrderIndexViewModel>
+
+@{
+    ViewBag.Title = "لیست تمام فاکتور ها";
+}
+@if (!Model.Any())
+{
+    <div class="alert alert-danger">
+        <p style="font-size: 16px; font-family: 'byekan'">
+            سفارشی ثبت نشده است
+        </p>
+    </div>
+}
+else
+{
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+
+                    @Html.ActionLink("جزیات", "OrderDetail", new { id = item.Id }, new { @class = "btn btn-info" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/css/bootstrap-rtl.css" rel="stylesheet" />
+    <script src="~/Content/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckeditor/adapters/jquery.js"></script>
+    
+    @RenderSection("headscripts", false)
+</head>
+<body style="font-family: byekan">
+    @Html.Partial("_AdminMenu")
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        @RenderSection("Scripts", required:false)
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model Shop.Models.Review
+           
+<div class="row">
+    <div class="col-md-12">
+        @*<span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>*@
+
+        @Html.DisplayFor(model => model.Rating, "Stars")
+        <br />
+        توسط:    &nbsp;
+        @Model.User.UserName
+
+        <span class="pull-left">
+            @* @Html.ToPersianRelativeDate(r.AddDate)*@
+            @Model.AddDate
+        </span>
+        <p>@Model.Comment</p>
+        <hr />
+    </div>
+</div>

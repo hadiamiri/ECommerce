@@ -1,0 +1,35 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("پنل مدیر سایت", "Index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("صفحه اصلی سایت", "Index", "Home", new {Area = ""}, null)
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Category")">گروه های کالا</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Product")">تمام محصولات</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Content")">مدیریت محتوا های سایت</a>
+                </li>
+                
+
+                <li>
+                    <a href="@Url.Action("Index", "Order")">لیست تمام فاکتور ها</a>
+                </li>
+
+              
+            </ul>
+        </div>
+    </div>
+</div>

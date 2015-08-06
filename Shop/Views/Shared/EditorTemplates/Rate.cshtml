@@ -1,0 +1,13 @@
+﻿@model int
+           
+
+@{
+    var list = new int[] {1, 2, 3, 4, 5}.Select(x => new
+    {
+        value = x,
+        text = x
+    }).AsEnumerable();
+
+    var selectList = new SelectList(list, "value", "text");
+}
+@Html.DropDownList("",selectList, string.Empty, new {@class = "form-control"})

@@ -1,0 +1,9 @@
+﻿@model Shop.Models.Cart
+<div class="navbar-right">
+    @Html.ActionLink("اتمام خرید", "Checkout", "Cart", null, new { @class = "btn btn-default navbar-btn" })
+</div>
+<div class="navbar-text navbar-left">
+    <b>@Html.ActionLink("سبد شما", "Index", "Cart")</b>
+    @Model.Lines.Sum(x => x.Count) محصول,
+    @Model.ComputeTotalValue() ریال
+</div>

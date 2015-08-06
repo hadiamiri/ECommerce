@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Shop.Models.Product>
+
+
+<p style="padding-top: 20px">
+    @Html.ActionLink("ایجاد کالای جدید", "Create", null,new {@class="btn btn-success"})
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        <span style="font-size: 16px">
+             کالایی وجود ندارد
+        </span>
+    </div>
+}
+else {
+    foreach (var product in Model)
+    {
+        @Html.Partial("ProductSummary", product);
+    }
+}

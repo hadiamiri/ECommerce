@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Shop.ViewModels.ProductHomeView>
+
+
+<div class="col-md-9">
+    <div class="row">
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-warning">
+                <span style="font-size: 16px">
+                    کالایی وجود ندارد
+                </span>
+            </div>
+        }
+        else
+        {
+            foreach (var p in Model)
+            {
+                @Html.Partial("_Item", p)
+            }
+        }
+    </div>
+</div>

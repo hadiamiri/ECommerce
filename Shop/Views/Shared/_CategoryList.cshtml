@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Shop.Models.Category>
+
+
+<p class="lead">لیست گروه ها</p>
+<div class="list-group">
+
+    @foreach (var p in Model)
+    {
+        <a href="@Url.Action("Category", "ViewProduct", new { p.Id })" class="list-group-item">@p.Name</a>
+    }
+</div>
+

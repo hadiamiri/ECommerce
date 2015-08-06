@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Shop.ViewModels.ProductHomeView>
+<div class="col-md-9">
+    <div class="row">
+       @if (Model.Any())
+       {
+        foreach (var p in Model)
+        {
+            @Html.Partial("_Item", p)
+        }
+       }
+    </div>
+</div>

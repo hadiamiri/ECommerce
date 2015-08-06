@@ -1,0 +1,57 @@
+﻿@model Shop.ViewModels.CheckoutViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "اتمام خرید";
+}
+
+@if (!Model.Lines.Any())
+{
+    <div class="alert alert-warning">
+        <span style="font-size: 16px">
+            سبد شما خالی میباشد !
+        </span>
+
+        @Html.ActionLink("خرید از سایت", "Index", "Home")
+    </div>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>مقدار</th>
+                    <th>جنس</th>
+                    <th>قیمت هر محصول</th>
+                    <th>قیمت ردیف</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var line in Model.Lines)
+                {
+                    <tr>
+                        <td>@line.Count</td>
+                        <td>@line.Product.Name</td>
+                        <td class="text-right">
+                            @line.Product.Price ریال
+                        </td>
+                        <td class="text-right">
+                            @((line.Count * line.Product.Price)) ریال
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div>
+            ارسال به آدرس : @Html.TextAreaFor(x => x.Address, 5, 440, new { @class = "form-control" })
+        </div>
+        <br />
+        <br />
+        <input type="submit" value="پرداخت" class="btn btn-success" />
+        @Html.ActionLink("انصراف", "Index", "Home", null, new { @class = "btn btn-danger" })
+    }
+
+}

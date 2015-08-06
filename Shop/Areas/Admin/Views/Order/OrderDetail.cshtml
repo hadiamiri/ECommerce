@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Shop.Models.OrderDetail>
+           
+@{
+    ViewBag.Title = "جزیئات فاکتور";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            نام محصول
+        </th>
+        <th>
+           تعداد
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("بازگشت به لیست فاکتور ها", "Index", "Order", null, new { @class = "btn btn-info" })

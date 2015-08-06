@@ -1,0 +1,43 @@
+﻿@model Shop.Areas.Admin.ViewModels.ContentCreateModel
+
+@{
+    ViewBag.Title = "ویرایش محتوا";
+}
+@using (Html.BeginForm("Edit", "Content", FormMethod.Post, new { Area = "Admin" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="font-family: byekan">ویرایش</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text)
+
+                <script>
+                    $("#Text").ckeditor()
+                </script>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ذخیره" class="btn btn-success" />
+                @Html.ActionLink("انصراف", "Index", "Content", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/css/bootstrap-rtl.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    
+    
+    @RenderSection("headscripts", false)
+
+</head>
+    <body style ="font-family: byekan">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("فروشگاه من", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="@Url.Action("About", "Home")">درباره ما</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ContactUs", "Home")">ارتباط با ما</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Guide", "Home")">راهنمای خرید</a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.Action("Summary", "Cart")
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            @Html.Partial("_LoginPartial")
+                        </li>
+                        <li>
+                            @if (User.IsInRole("admin"))
+                            {
+                                @Html.ActionLink("پنل مدیریت", "Index", "Home", new { Area = "Admin" }, null)
+                            }
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-3" style="padding-top: 20px;">
+                    @Html.Action("CategoryMenue", "Home")
+                </div>
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </body>
+</html>
